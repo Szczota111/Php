@@ -3,62 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Losowanie Liczb</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            margin-top: 50px;
-        }
-        .sekcja {
-            border: 1px solid #333;
-            padding: 20px;
-            text-align: center;
-            width: 30%;
-        }
-        .z {
-            color: green;
-        }
-        .czerwony {
-            color: red;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <!-- Sekcja Lewa -->
-    <div class="sekcja">
-        <h3>Sekcja Lewa</h3>
-        <?php
-        $lewaLiczba = rand(1, 100);
-        echo "<p>Liczba: $lewaLiczba</p>";
-        ?>
-    </div>
 
-    <!-- Sekcja Środkowa -->
-    <div class="sekcja">
-        <h3>Sekcja Środkowa</h3>
-        <?php
-        $srodkoweLiczby = [];
-        for ($i = 0; $i < 100; $i++) {
-            $liczba = rand(1, 100);
-            $srodkoweLiczby[] = $liczba;
-            $kolor = $liczba > 20 ? "z" : "czerwony";
-            echo "<span class='$kolor'>$liczba </span>";
-        }
-        ?>
-    </div>
+<?php 
+// Polecenie 
+// napisz jakąs dowolna funkcje nastepnie zrob tabele gdzie bedzie wyswietlac sie
+// liczba X przed zastosowaniem funkcji i po napisz to z zakresu od -10 do 10
+echo "<h1> zadanie na szota</h1>";
+echo "<br>";
 
-    <!-- Sekcja Prawa -->
-    <div class="sekcja">
-        <h3>Sekcja Prawa</h3>
-        <?php
-        $prawaLiczba = rand(1, 100);
-        $liczbaWystapien = array_count_values($srodkoweLiczby)[$prawaLiczba] ?? 0;
-        echo "<p>Liczba: $prawaLiczba</p>";
-        echo "<p>Wystąpienia: $liczbaWystapien</p>";
-        ?>
-    </div>
+$x = -10;
+function f1($x)
+{
+    return $x * 2;
+
+}
+
+echo " <table border=1px>";
+echo "<tr>";
+echo "<th>Wartosc X </th>";
+echo "<th> wartosc funkcji</th>";
+echo "</tr>";
+for ($i=11; $x < $i; $x++)
+{
+    $F1value = f1($x);
+echo " <tr>";
+echo "<td>$x</td>";
+echo "<td>$F1value</td>";
+echo "</tr>";
+}
+ echo " </table>";
+
+echo " <br>";
+echo "koniec zadania";
+?>
+
+    
 </body>
 </html>

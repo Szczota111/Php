@@ -1,77 +1,70 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Losowanie Liczb</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            margin-top: 50px;
-        }
-        .sekcja {
-            border: 1px solid #333;
-            padding: 20px;
-            text-align: center;
-            width: 30%;
-        }
-        .zielony {
-            color: green;
-        }
-        .czerwony {
-            color: red;
-        }
-    </style>
+    <title>Document</title>
+<style>
+table{
+    border-collapse: collapse;
+    width: auto;
+}
+td, th{
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+.zolty{
+    background-color: yellow;
+}
+</style>
 </head>
 <body>
+<?php
+$a = rand(1, 100); 
+$b = rand($a + 1, 100);
 
-    <!-- Sekcja Lewa -->
-    <div class="sekcja">
-        <h3>Sekcja Lewa</h3>
-        <?php
-        $lewaLiczby = [];
-        for ($i = 0; $i < 10; $i++) {
-            $liczba = rand(1, 50);
-            $lewaLiczby[] = $liczba;
-            $kolor = ($liczba % 2 == 0) ? "zielony" : "czerwony";  // Parzyste = zielony, nieparzyste = czerwony
-            echo "<span class='$kolor'>$liczba </span>";
-        }
-        ?>
-    </div>
+function f1($x) {
+    return 2 * $x + 1;
+}
+function f2($x) {
+    return $x * $x;
+}
 
-    <!-- Sekcja Środkowa -->
-    <div class="sekcja">
-        <h3>Sekcja Środkowa</h3>
-        <?php
-        $suma = array_sum($lewaLiczby);
-        $srednia = $suma / count($lewaLiczby);  // Średnia liczb z sekcji lewej
-        echo "<p>Średnia liczb z sekcji lewej: $srednia</p>";
-        ?>
-    </div>
+echo "<h3>Wartości funkcji dla przedziału od $a do $b:</h3>";
+echo "<table>";
 
-    <!-- Sekcja Prawa -->
-    <div class="sekcja">
-        <h3>Sekcja Prawa</h3>
-        <?php
-        $prawaLiczba = rand(1, 50);
-        $wystapienia = array_count_values($lewaLiczby)[$prawaLiczba] ?? 0;  // Sprawdzamy, ile razy liczba występuje w sekcji lewej
+// Nagłówki kolumn
+echo "<tr>";
+echo "<th>x</th>";
+for ($x = $a; $x <= $b; $x++) {
+    echo "<th>$x</th>";
+}
+echo "</tr>";
 
-        echo "<p>Liczba wylosowana w sekcji prawej: $prawaLiczba</p>";
-        echo "<p>Wystąpienia: $wystapienia</p>";
+// Wiersz f1(x)
+echo "<tr>";
+echo "<td>f1(x)</td>";
+for ($x = $a; $x <= $b; $x++) {
+    $l1 = f1($x);
+    $l2 = f2($x);
+    $class = $l1 > $l2 ? 'zolty' : '';
+    echo "<td class='$class'>$l1</td>";
+}
+echo "</tr>";
 
-        // Porównanie z średnią
-        if ($prawaLiczba > $srednia) {
-            echo "<p>Liczba z sekcji prawej jest większa od średniej.</p>";
-        } elseif ($prawaLiczba < $srednia) {
-            echo "<p>Liczba z sekcji prawej jest mniejsza od średniej.</p>";
-        } else {
-            echo "<p>Liczba z sekcji prawej jest równa średniej.</p>";
-        }
-        ?>
-    </div>
+// Wiersz f2(x)
+echo "<tr>";
+echo "<td>f2(x)</td>";
+for ($x = $a; $x <= $b; $x++) {
+    $l1 = f1($x);
+    $l2 = f2($x);
+    $class = $l2 > $l1 ? 'zolty' : '';
+    echo "<td class='$class'>$l2</td>";
+}
+echo "</tr>";
 
+echo "</table>";
+?>
 </body>
 </html>
